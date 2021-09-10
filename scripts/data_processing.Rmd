@@ -1,0 +1,170 @@
+---
+title: "Reporting rate data cleaning"
+author: "Amanda Meadows"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(data.table)
+library(DT)
+library(ggplot2)
+theme_set(theme_bw())
+```
+
+# Raw reporting rate data 
+
+```{r}
+# Reporting rate data (collected from lit review)
+rr_dt <- fread("../data/reporting_data_all.csv")
+```
+
+## Observations per pathogen
+
+```{r}
+datatable(rr_dt [, .N, by = .(pathogen)][order(-N)])
+```
+
+## Observations per country
+
+
+```{r}
+datatable(rr_dt[, .N, by = .(country, EPI)][order(-N)])
+```
+
+## Observations per source
+
+* Some sources provided estimates for many countries/years and were recorded as independent data points.
+
+```{r}
+datatable(rr_dt[, .N, by = .(source)][order(-N)])
+```
+
+# Data cleaning 
+
+## Exclude Salmonella and Campy
+
+* These two pathogens comprise over half the data points, exclude the data to avoid biasing the model towards these gastrointestinal pathogens.
+
+```{r}
+reportingDat <- rr_dt[!pathogen%in% c("campylobacter", "salmonella")]
+```
+
+## Condense to country/pathogen/year
+
+* Some large events (e.g.) West Africa Ebola event had multiple studies estimating reporting rates for the same event. Condensing the data to country/year/pathogen by averging the reporting rates from these sources.
+
+```{r}
+# average reporting rates from multiple sources for the same outbreak event
+reportingDat <- reportingDat[,lapply(.SD, mean), by = .(country, ISO2, pathogen, 
+                                                        CFR, year =start_study, epidemic, EPI), 
+                             .SDcols = "reporting_rate"]
+```
+
+## Add Varities of Democracy data
+
+```{r}
+library(vdemdata)
+vdem <- data.table(vdem)
+# there are a lot of variables in this dataset, pull out those that are potentially 
+# related to suppression of case counts
+vdemShort <- vdem[, .(country = country_name, year, 
+                      v2smgovdom_ord, # gov dissemination of false info domestically
+                      v2smgovab_ord, # gov dissemination of false info abroad
+                      v2smgovfilprc_ord,  # gov internet filtering in practice
+                      v2excrptps_ord, # public sector corrupt exchanges
+                      v2mecenefm_ord, # gov censorship effort - media
+                      v2mecrit_ord, # print/broadcast media critical of gov
+                      v2mebias_ord #media bias against opposition
+                      )]
+
+vdemShort[, ISO2 := countrycode::countrycode(sourcevar = country, origin = "country.name", destination = "iso2c")]
+reportingDat_complete <- merge(reportingDat, vdemShort, 
+                        by = c("ISO2", "year"), all.x = T)
+
+```
+
+## Add World Bank income data
+
+```{r}
+library(WDI)
+Income_dat <- data.table(WDI_data$country)
+Income_dat <- Income_dat[, .(ISO2 = iso2c, income)]
+reportingDat_complete[Income_dat, income := i.income, on =.(ISO2)]
+```
+
+## Add STI variable
+
+* Classify pathogens as having sexual transmission or not
+
+```{r}
+# create STI variable 
+reportingDat_complete[pathogen %in% c("neisseria gonorrhoeae", "hepatitis b virus", 
+                             "human immunodeficiency virus","treponema pallidum", 
+                             "chlamydia trachomatis", "hepatitis c virus"), STI := "Yes"]
+reportingDat_complete[!pathogen %in% c("neisseria gonorrhoeae", "hepatitis b virus", 
+                              "human immunodeficiency virus", "treponema pallidum", 
+                              "chlamydia trachomatis", "hepatitis c virus"), STI := "No"]
+
+# write cleaned data
+fwrite(reportingDat_complete, "../data/reporting_data_analysis.csv")
+```
+
+# Cleaned data exploration
+
+## Observations per country
+
+```{r}
+datatable(reportingDat_complete[, .N, by = .(country, EPI)][order(-N)])
+```
+
+## Observations per World Bank income group
+
+```{r}
+datatable(reportingDat_complete[, .N, by = .(income)][order(-N)])
+```
+
+## Observations per pathogen
+
+```{r}
+datatable(reportingDat_complete[, .N, by = .(pathogen)][order(-N)])
+```
+
+## Observations per STI classification
+
+```{r}
+datatable(reportingDat_complete[, .N, by = .(STI)][order(-N)])
+```
+
+## Distribution of EPI scores in data
+
+```{r}
+ggplot(data = reportingDat_complete, aes(x = EPI)) + 
+  geom_histogram(bins = 15) 
+```
+
+## Distribution of CFR in data
+
+```{r}
+ggplot(data = reportingDat_complete, aes(x = CFR)) + 
+  geom_histogram(bins = 15)
+```
+
+## Distribution of reporting rates in data
+
+```{r}
+ggplot(data = reportingDat_complete, aes(x = reporting_rate)) + 
+  geom_histogram(bins = 15) 
+```
+
+
+
+
+
+
+

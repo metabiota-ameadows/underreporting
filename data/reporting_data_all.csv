@@ -1,0 +1,256 @@
+source,country,ISO2,start_study,epidemic,pathogen,CFR,EPI,reporting_rate
+3,EU-27,"",2005,No,campylobacter,0.0072,,0.021
+17,Argentina,AR,1990,No,leishmania cutaneous,0,79,0.44
+3,Austria,AT,1997,No,campylobacter,0.0072,92,0.067
+3,Austria,AT,2005,No,campylobacter,0.0072,92,0.034
+3,Austria,AT,1997,No,salmonella,0.0072,92,0.333
+3,Austria,AT,2005,No,salmonella,0.0072,92,0.091
+3,Australia,AU,2002,No,campylobacter,0.0072,84,0.1
+3,Australia,AU,2005,No,salmonella,0.0072,84,0.143
+3,Belgium,BE,1997,No,campylobacter,0.0072,85,0.04
+3,Belgium,BE,2005,No,campylobacter,0.0072,85,0.091
+13,Belgium,BE,2004,Yes,influenza a virus,0.1466,85,0.036
+3,Belgium,BE,1997,No,salmonella,0.0072,85,0.286
+3,Belgium,BE,2005,No,salmonella,0.0072,85,0.526
+3,Bulgaria,BG,2005,No,campylobacter,0.0072,81,0.001
+3,Bulgaria,BG,1997,No,salmonella,0.0072,81,0.004
+3,Bulgaria,BG,2005,No,salmonella,0.0072,81,0.001
+3,Switzerland,CH,2005,No,campylobacter,0.0072,93,0.303
+3,Switzerland,CH,2005,No,salmonella,0.0072,93,0.141
+30,China,CN,2008,No,neisseria gonorrhoeae,0,77,0.58
+32,China,CN,2005,No,rotavirus a,0.0034,77,0.25
+5,Colombia,CO,2015,No,chikungunya virus,0.001,73,0.13
+8,Colombia,CO,2010,Yes,dengue virus,1e-04,73,1
+8,Colombia,CO,2011,No,dengue virus,1e-04,73,0.286
+9,Colombia,CO,1995,No,dengue virus,1e-04,73,0.111
+3,Cyprus,CY,2005,No,campylobacter,0.0072,87,0.003
+3,Cyprus,CY,1997,No,salmonella,0.0072,87,0.014
+3,Cyprus,CY,2005,No,salmonella,0.0072,87,0.006
+3,Czech Republic,CZ,2005,No,campylobacter,0.0072,87,0.091
+3,Czech Republic,CZ,1997,No,salmonella,0.0072,87,0.333
+3,Czech Republic,CZ,2005,No,salmonella,0.0072,87,0.035
+3,Germany,DE,1997,No,campylobacter,0.0072,87,0.167
+3,Germany,DE,2001,No,campylobacter,0.0072,87,0.108
+3,Germany,DE,2005,No,campylobacter,0.0072,87,0.227
+23,Germany,DE,2006,Yes,measles virus,0.002,87,0.4
+29,Germany,DE,2007,No,mumps virus,1e-04,87,0.075
+3,Germany,DE,1997,No,salmonella,0.0072,87,0.556
+3,Germany,DE,2001,No,salmonella,0.0072,87,0.149
+3,Germany,DE,2005,No,salmonella,0.0072,87,0.102
+3,Denmark,DK,1997,No,campylobacter,0.0072,94,0.25
+3,Denmark,DK,2001,No,campylobacter,0.0072,94,0.034
+3,Denmark,DK,2005,No,campylobacter,0.0072,94,0.244
+3,Denmark,DK,1997,No,salmonella,0.0072,94,0.556
+3,Denmark,DK,2001,No,salmonella,0.0072,94,0.059
+3,Denmark,DK,2005,No,salmonella,0.0072,94,0.227
+3,Estonia,EE,2005,No,campylobacter,0.0072,85,0.077
+3,Estonia,EE,1997,No,salmonella,0.0072,85,0.769
+3,Estonia,EE,2005,No,salmonella,0.0072,85,0.059
+3,Spain,ES,2005,No,campylobacter,0.0072,84,0.004
+3,Spain,ES,1997,No,salmonella,0.0072,84,0.01
+3,Spain,ES,2005,No,salmonella,0.0072,84,0.005
+3,Finland,FI,1997,No,campylobacter,0.0072,92,1
+3,Finland,FI,2005,No,campylobacter,0.0072,92,2.5
+3,Finland,FI,1997,No,salmonella,0.0072,92,1.667
+3,Finland,FI,2005,No,salmonella,0.0072,92,2.5
+3,France,FR,1997,No,campylobacter,0.0072,87,0
+3,France,FR,2005,No,campylobacter,0.0072,87,0.004
+16,France,FR,2003,No,legionella,0.1,87,0.33
+3,France,FR,1997,No,salmonella,0.0072,87,0.12
+3,France,FR,2005,No,salmonella,0.0072,87,0.037
+47,France,FR,2014,Yes,zika virus,0,87,0.12
+3,United Kingdom,GB,1992,No,campylobacter,0.0072,87,0.132
+3,United Kingdom,GB,1997,No,campylobacter,0.0072,87,0.091
+3,United Kingdom,GB,2001,No,campylobacter,0.0072,87,0.019
+3,United Kingdom,GB,2005,No,campylobacter,0.0072,87,0.227
+3,United Kingdom,GB,2008,No,campylobacter,0.0072,87,0.108
+6,United Kingdom,GB,1984,No,clostridium tetani,0.13,87,0.36
+3,United Kingdom,GB,1993,No,salmonella,0.0072,87,0.313
+3,United Kingdom,GB,1997,No,salmonella,0.0072,87,0.233
+3,United Kingdom,GB,2001,No,salmonella,0.0072,87,0.025
+3,United Kingdom,GB,2005,No,salmonella,0.0072,87,0.137
+3,United Kingdom,GB,2008,No,salmonella,0.0072,87,0.213
+45,Guinea,GN,2014,Yes,zaire ebolavirus,0.415,41,0.5
+2,Greece,GR,2004,No,brucella,0.01,82,0.74
+3,Greece,GR,1997,No,campylobacter,0.0072,82,0.001
+2,Greece,GR,2004,No,leishmania visceral,0.0929,82,0.74
+22,Greece,GR,1996,No,listeria,0.2,82,0.588
+2,Greece,GR,2004,No,mycobacterium tuberculosis,0.435,82,0.52
+3,Greece,GR,1996,No,salmonella,0.0072,82,0.019
+3,Greece,GR,1997,No,salmonella,0.0072,82,0.01
+2,Greece,GR,1999,No,salmonella,0.0072,82,0.57
+3,Greece,GR,2005,No,salmonella,0.0072,82,0.001
+2,Greece,GR,2004,No,varicella-zoster virus,0,82,0.56
+2,Greece,GR,2004,No,varicella-zoster virus,0,82,0.57
+42,Greece,GR,2012,No,west nile virus,0.001,82,0.822
+18,Guatemala,GT,1997,No,leishmania cutaneous,0,57,0.025
+3,Croatia,HR,1997,No,salmonella,0.0072,83,0.033
+3,EU-27 (excl.Croatia),HR,2005,No,salmonella,0.0072,83,0.017
+3,Hungary,HU,2005,No,campylobacter,0.0072,87,0.019
+3,Hungary,HU,1997,No,salmonella,0.0072,87,0.182
+3,Hungary,HU,2005,No,salmonella,0.0072,87,0.015
+8,Indonesia,ID,2000,No,dengue virus,1e-04,66,0.018
+8,Indonesia,ID,2001,No,dengue virus,1e-04,66,0.008
+8,Indonesia,ID,2002,No,dengue virus,1e-04,66,0.028
+8,Indonesia,ID,2010,No,dengue virus,1e-04,66,0.017
+10,Indonesia,ID,2001,No,dengue virus,1e-04,66,0.132
+3,Ireland,IE,1997,No,campylobacter,0.0072,89,0.022
+3,Ireland,IE,2005,No,campylobacter,0.0072,89,0.034
+3,Ireland,IE,1997,No,salmonella,0.0072,89,0.233
+3,Ireland,IE,2005,No,salmonella,0.0072,89,0.185
+20,India,IN,2000,No,leishmania visceral,0.0929,65,0.123
+21,India,IN,2003,No,leishmania visceral,0.0929,65,0.12
+21,India,IN,2005,No,leishmania visceral,0.0929,65,0.27
+3,Iceland,IS,1997,No,salmonella,0.0072,89,2.5
+3,Italy,IT,1997,No,campylobacter,0.0072,89,0.002
+3,Italy,IT,2005,No,campylobacter,0.0072,89,0.01
+15,Italy,IT,2002,No,legionella,0.1,89,0.786
+28,Italy,IT,2004,No,mumps virus,1e-04,89,0.057
+31,Italy,IT,2001,No,neisseria meningitidis,0.15,89,0.828
+33,Italy,IT,2008,No,rotavirus a,0.0034,89,0.612
+3,Italy,IT,1997,No,salmonella,0.0072,89,0.076
+3,Italy,IT,2001,No,salmonella,0.0072,89,0.059
+3,Italy,IT,2005,No,salmonella,0.0072,89,0.014
+35,Italy,IT,1996,No,varicella-zoster virus,0,89,0.13
+35,Italy,IT,2001,No,varicella-zoster virus,0,89,0.206
+41,Italy,IT,2010,Yes,west nile virus,0.001,89,0.001
+19,Jordan,JO,2001,No,leishmania cutaneous,0,68,0.021
+3,Japan,JP,2005,No,salmonella,0.0072,92,0.014
+36,Kenya,KE,2008,Yes,vibrio cholerae,0.01,52,0.685
+8,Cambodia,KH,2006,Yes,dengue virus,1e-04,63,0.091
+8,Cambodia,KH,2007,Yes,dengue virus,1e-04,63,0.053
+8,Cambodia,KH,2008,No,dengue virus,1e-04,63,0.045
+10,Cambodia,KH,2008,No,dengue virus,1e-04,63,0.078
+43,Liberia,LR,2014,Yes,zaire ebolavirus,0.415,44,0.4
+45,Liberia,LR,2014,Yes,zaire ebolavirus,0.415,44,0.667
+46,Liberia,LR,2014,Yes,zaire ebolavirus,0.415,44,0.4
+3,Lithuania,LT,2005,No,campylobacter,0.0072,86,0.025
+3,Lithuania,LT,1997,No,salmonella,0.0072,86,0.1
+3,Lithuania,LT,2005,No,salmonella,0.0072,86,0.017
+3,Luxembourg,LU,1997,No,campylobacter,0.0072,92,0.053
+3,Luxembourg,LU,2005,No,campylobacter,0.0072,92,0.256
+3,Luxembourg,LU,2005,No,salmonella,0.0072,92,0.222
+3,Latvia,LV,1997,No,salmonella,0.0072,85,0.085
+3,Latvia,LV,2005,No,salmonella,0.0072,85,0.023
+3,Malta,MT,2005,No,campylobacter,0.0072,88,0.011
+3,Malta,MT,1997,No,salmonella,0.0072,88,0.011
+3,Malta,MT,2005,No,salmonella,0.0072,88,0.004
+10,Malaysia,MY,2001,No,dengue virus,1e-04,78,0.263
+24,Nigeria,NG,2007,No,measles virus,0.002,44,0.115
+8,Nicaragua,NI,2001,No,dengue virus,1e-04,68,0.048
+8,Nicaragua,NI,2002,No,dengue virus,1e-04,68,0.048
+8,Nicaragua,NI,2003,No,dengue virus,1e-04,68,0.043
+8,Nicaragua,NI,2005,No,dengue virus,1e-04,68,0.017
+8,Nicaragua,NI,2006,No,dengue virus,1e-04,68,0.083
+8,Nicaragua,NI,2007,No,dengue virus,1e-04,68,0.017
+10,Nicaragua,NI,2004,No,dengue virus,1e-04,68,0.049
+3,Netherlands,NL,2009,No,campylobacter,0.0072,94,0.103
+3,Netherlands,NL,1966,No,campylobacter,0.0072,94,0.044
+3,Netherlands,NL,1991,No,campylobacter,0.0072,94,0.053
+3,Netherlands,NL,1997,No,campylobacter,0.0072,94,0.032
+3,Netherlands,NL,2005,No,campylobacter,0.0072,94,0.045
+3,Netherlands,NL,2005,No,campylobacter,0.0072,94,0.02
+3,Netherlands,NL,2007,No,chlamydia trachomatis,0,94,0.9
+3,Netherlands,NL,2007,No,coxiella burnetii,0.01,94,0.198
+3,Netherlands,NL,2006,No,hepatitis a virus,0.006,94,0.222
+12,Netherlands,NL,2011,No,hepatitis b virus,0.0186,94,0.826
+3,Netherlands,NL,2011,No,hepatitis c virus,0,94,0.667
+3,Netherlands,NL,2011,Yes,human immunodeficiency virus,0.202,94,1
+3,Netherlands,NL,2011,Yes,influenza a virus,0.1466,94,0.222
+12,Netherlands,NL,2011,Yes,measles virus,0.002,94,0.077
+12,Netherlands,NL,2011,No,mumps virus,1e-04,94,1
+12,Netherlands,NL,2011,No,mycobacterium tuberculosis,0.435,94,0.909
+12,Netherlands,NL,2011,No,neisseria gonorrhoeae,0,94,0.395
+12,Netherlands,NL,2011,No,poliovirus,5e-04,94,1
+12,Netherlands,NL,2011,No,rabies virus,1,94,1
+12,Netherlands,NL,2011,No,rubella virus,2e-04,94,0.077
+3,Netherlands,NL,1966,No,salmonella,0.0072,94,0.04
+12,Netherlands,NL,1996,No,salmonella,0.0072,94,0.071
+3,Netherlands,NL,1996,No,salmonella,0.0072,94,0.07
+3,Netherlands,NL,1997,No,salmonella,0.0072,94,0.13
+3,Netherlands,NL,2001,No,salmonella,0.0072,94,0.05
+3,Netherlands,NL,2005,No,salmonella,0.0072,94,0.038
+3,Netherlands,NL,2011,No,treponema pallidum,0,94,0.238
+3,Norway,NO,1997,No,campylobacter,0.0072,93,0.25
+3,Norway,NO,2005,No,campylobacter,0.0072,93,0.417
+3,Norway,NO,1997,No,salmonella,0.0072,93,1
+3,Norway,NO,2005,No,salmonella,0.0072,93,0.833
+8,Peru,PE,2004,No,dengue virus,1e-04,66,0.042
+8,Peru,PE,2004,No,dengue virus,1e-04,66,0.02
+8,Peru,PE,2004,No,dengue virus,1e-04,66,0.034
+8,Philippines,PH,2007,No,dengue virus,1e-04,66,0.067
+8,Philippines,PH,2010,Yes,dengue virus,1e-04,66,0.071
+3,Poland,PL,2001,No,campylobacter,0.0072,85,0.014
+3,Poland,PL,2005,No,campylobacter,0.0072,85,0
+3,Poland,PL,1997,No,salmonella,0.0072,85,0.062
+3,Poland,PL,2001,No,salmonella,0.0072,85,0.056
+3,Poland,PL,2005,No,salmonella,0.0072,85,0.009
+3,Portugal,PT,1997,No,salmonella,0.0072,90,0.003
+3,Portugal,PT,2005,No,salmonella,0.0072,90,0
+3,Romania,RO,2005,No,campylobacter,0.0072,82,0
+3,Romania,RO,1997,No,salmonella,0.0072,82,0.003
+3,Romania,RO,2005,No,salmonella,0.0072,82,0.003
+25,Saudi Arabia,SA,2013,Yes,mers coronavirus,0.36,73,0.38
+26,Saudi Arabia,SA,2013,Yes,mers coronavirus,0.36,73,0.38
+26,Saudi Arabia,SA,2014,Yes,mers coronavirus,0.36,73,0.263
+3,Sweden,SE,2001,No,campylobacter,0.0072,85,0.059
+3,Sweden,SE,2005,No,campylobacter,0.0072,85,2.5
+3,Sweden,SE,2001,No,salmonella,0.0072,85,0.1
+3,Sweden,SE,2005,No,salmonella,0.0072,85,2
+8,Singapore,SG,2004,No,dengue virus,1e-04,95,0.242
+3,Slovenia,SI,2005,No,campylobacter,0.0072,88,0.071
+3,Slovenia,SI,1997,No,salmonella,0.0072,88,0.1
+3,Slovenia,SI,2005,No,salmonella,0.0072,88,0.025
+34,Slovenia,SI,2015,No,tick-borne encephalitis,0.02,88,0.45
+3,Slovakia,SK,2005,No,campylobacter,0.0072,87,0.029
+3,Slovakia,SK,1997,No,salmonella,0.0072,87,0.286
+3,Slovakia,SK,2005,No,salmonella,0.0072,87,0.019
+44,Sierra Leone,SL,2014,Yes,zaire ebolavirus,0.415,52,0.83
+45,Sierra Leone,SL,2014,Yes,zaire ebolavirus,0.415,52,0.5
+44,Sierra Leone,SL,2014,Yes,zaire ebolavirus,0.415,52,0.68
+44,Sierra Leone,SL,2014,Yes,zaire ebolavirus,0.415,52,0.55
+44,Sierra Leone,SL,2014,Yes,zaire ebolavirus,0.415,52,0.27
+44,Sierra Leone,SL,2014,Yes,zaire ebolavirus,0.415,52,0.33
+8,Thailand,TH,2010,Yes,dengue virus,1e-04,76,0.091
+10,Thailand,TH,2001,No,dengue virus,1e-04,76,0.118
+37,Tanzania,TZ,2016,Yes,vibrio cholerae,0.01,44,0.48
+1,United States,US,1993,No,borrelia burgdorferi,0,85,0.12
+3,United States,US,1996,No,campylobacter,0.0072,85,0.026
+4,United States,US,2014,No,chikungunya virus,0.001,85,0.02
+7,United States,US,1997,No,corynebacterium diphtheriae,0.1,85,0.5
+8,United States,US,2005,No,dengue virus,1e-04,85,0.182
+8,United States,US,2006,No,dengue virus,1e-04,85,0.6
+11,United States,US,1971,No,drug-resistant shigella,2e-04,85,0.62
+11,United States,US,1978,No,drug-resistant shigella,2e-04,85,0.3
+11,United States,US,1988,No,drug-resistant shigella,2e-04,85,0.67
+11,United States,US,1988,No,hepatitis a virus,0.006,85,0.33
+11,United States,US,1988,No,hepatitis b virus,0.0186,85,0.5
+11,United States,US,2009,Yes,influenza a virus,0.1466,85,0.013
+14,United States,US,2010,Yes,influenza a virus,0.1466,85,0.326
+11,United States,US,1991,Yes,measles virus,0.002,85,0.63
+27,United States,US,2008,No,methicillin-resistant staphylococcus aureus (mrsa),0.218,85,0.346
+11,United States,US,1971,No,mycobacterium tuberculosis,0.435,85,0.63
+11,United States,US,1972,No,mycobacterium tuberculosis,0.435,85,0.65
+11,United States,US,1992,No,mycobacterium tuberculosis,0.435,85,0.86
+11,United States,US,1995,No,mycobacterium tuberculosis,0.435,85,0.98
+11,United States,US,1996,No,mycobacterium tuberculosis,0.435,85,0.81
+11,United States,US,1974,No,neisseria gonorrhoeae,0,85,0.42
+11,United States,US,1983,No,neisseria gonorrhoeae,0,85,0.93
+11,United States,US,1988,No,neisseria gonorrhoeae,0,85,0.95
+11,United States,US,1989,No,neisseria gonorrhoeae,0,85,0.91
+11,United States,US,1971,No,salmonella,0.0072,85,0.42
+3,United States,US,1983,No,salmonella,0.0072,85,0.67
+3,United States,US,1996,No,salmonella,0.0072,85,0.026
+,United States,US,1988,No,treponema pallidum,0,85,0.79
+38,United States,US,2003,Yes,west nile virus,0.001,85,0
+39,United States,US,2016,No,west nile virus,0.001,85,0.015
+40,United States,US,1999,No,west nile virus,0.001,85,0.011
+8,Venezuela,VE,2002,No,dengue virus,1e-04,59,0.059
+8,Venezuela,VE,2003,No,dengue virus,1e-04,59,0.067
+8,Venezuela,VE,2007,Yes,dengue virus,1e-04,59,0.154
+8,Vietnam,VN,2004,No,dengue virus,1e-04,78,0.03
+8,Vietnam,VN,2005,No,dengue virus,1e-04,78,0.045
+8,Vietnam,VN,2006,No,dengue virus,1e-04,78,0.032
+8,Vietnam,VN,2007,Yes,dengue virus,1e-04,78,0.034
+8,Vietnam,VN,2010,No,dengue virus,1e-04,78,0.067
+10,Vietnam,VN,2001,No,dengue virus,1e-04,78,0.172

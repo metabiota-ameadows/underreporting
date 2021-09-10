@@ -1,0 +1,391 @@
+---
+title: "Supplementary Analysis: Infectious disease underreporting is predicted by country-level preparedness, politics, and pathogen severity."
+author: "Amanda Meadows"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+library(data.table) # for data wrangling
+library(pander) # for displaying tables
+library(ggplot2) # for plots
+library(GGally) # for collinearity plots
+library(tidyverse) # for data wrangling
+library(broom) # for tidying model output
+library(MuMIn) # for model selection
+library(WDI) # for World Bank income data
+library(robustbase) # for robust regression
+library(vdemdata) # package not on CRAN, cloned from https://github.com/vdeminstitute/vdemdata
+library(caret) # for variable importance
+theme_set(theme_bw())
+```
+
+
+
+```{r}
+# reporting data
+reportingDat <- fread("../data/reporting_data_analysis.csv")
+reportingDat[, income := factor(income, levels = c("Low income", "Lower middle income", 
+                                                   "Upper middle income", "High income"))]
+
+```
+
+# I. Variable profiles
+
+This section contains:
+
+* A description of each variable. For Varieties of Democracy (V-Dem) variables, printing the information returned from the `var_info()` function from the `vdemdata` package. `var_info()` prints to the console basic information on a specific variable as given in the codebook of the V-Dem dataset.
+* Results of univariate models for each predictor variable. Results are from a binomial model without robust standard errors.
+* A plot showing the relationship of the variable with reporting rates collected in the literature search.
+* A plot showing the distribution of values in the data set.
+
+```{r}
+modDat <- reportingDat[complete.cases(reportingDat)]
+# function to run univariate model, print variable descriptions, and plot univariate relationship with reporting rate
+run_mod <- function(pred_var){
+  
+  info <- var_info(gsub("_ord","", pred_var))
+  
+  if(purrr::is_empty(info$name)){
+    cat("\n\n")
+    cat(paste0("## ", pred_var))
+    cat("\n\n")
+  }else{
+    cat("\n\n")
+    cat(paste0("## ", info$name))
+    cat("\n\n")
+  }
+  
+  factor_vars <-  c("income","STI", "epidemic")
+  fit_formula <- as.formula(paste("reporting_rate", pred_var, sep = "~"))
+  fit <- glm(fit_formula, 
+             data = reportingDat, family = "binomial")
+  N <- length(reportingDat[, get(pred_var)][!is.na(reportingDat[, get(pred_var)])])
+  mod_tab <- tidy(fit) %>% select(term, estimate, p.value)
+  
+  if(any(mod_tab$p.value < 0.05)){
+    emphasize.strong.rows(which(mod_tab$p.value < 0.05,  arr.ind = TRUE))
+  }
+  
+  cat(paste0("Column name in data: ", pred_var))
+  cat("\n\n")
+  if(!purrr::is_empty(info$name)){
+    cat(paste0("Question: ", info$question))
+    cat("\n\n")
+    cat("Responses: ", paste0(info$responses))
+    cat("\n\n")
+  } else if(pred_var == "CFR"){
+    cat("Description: Case fatality rate.")
+    cat("\n\n")
+  } else if(pred_var == "income"){
+    cat("Description: World Bank income classification.")
+    cat("\n\n")
+  } else if(pred_var == "EPI"){
+    cat("Description: Epidemic preparedness index (0 = lowest possible preparedness score; 100 = highest possible preparedness score).")
+    cat("\n\n")
+  } else if(pred_var == "year"){
+    cat("Description: The year the study began.")
+    cat("\n\n")
+  } else if(pred_var == "epidemic"){
+    cat("Description: Was the study estimating reporting rates during an epidemic?")
+    cat("\n\n")
+  }
+  cat(paste0("N: ", N))
+  cat("\n\n")
+  cat(pander(mod_tab))
+  cat("\n\n")
+  
+  if(pred_var %in% factor_vars){
+    p<-ggplot(modDat[, plot_var := factor(get(pred_var))], aes(y = reporting_rate, x = plot_var))+ 
+      geom_boxplot(outlier.shape = NA)+
+      geom_jitter(alpha = 0.5, width = 0.1, height = 0, size = 0.75) + 
+      xlab(pred_var)
+    print(p)
+  }else{
+    p1<-ggplot(modDat[, plot_var := get(pred_var)], aes(y = reporting_rate, x = plot_var))+ 
+      geom_point(alpha = 0.5) +
+      stat_smooth(method="glm", se=T, 
+                  method.args = list(family=binomial), size = 0.5, 
+                  color = "navy", fill = "lightgray") +
+      xlab(pred_var) + ylab("Reporting rate")
+    
+    p2 <- ggplot(modDat[, plot_var := get(pred_var)], aes(x = plot_var))+ 
+      geom_density() +
+      xlab(pred_var) 
+    gridExtra::grid.arrange(p1, p2, ncol = 2)
+  }
+  cat("\n\n")
+}
+```
+
+```{r, results = 'asis', fig.width= 6, fig.height = 3, fig.align= 'center'}
+run_mod("income")
+```
+
+```{r, results = 'asis', fig.width= 3, fig.height = 3, fig.align= 'center'}
+factor_vars <- c("STI", "epidemic")
+invisible(lapply(run_mod, X = factor_vars))
+```
+
+```{r, results = 'asis', fig.width= 8, fig.height = 3, fig.align= 'center'}
+cont_vars <- c("v2smgovab_ord", "v2smgovdom_ord", 
+                 "v2smgovfilprc_ord", 
+                 "v2mecenefm_ord", "v2mecrit_ord", "v2mebias_ord", 
+                 "v2excrptps_ord","EPI","year","CFR")
+invisible(lapply(run_mod, X = cont_vars))
+```
+
+
+# II. Collinearity assessment 
+
+* Assessing correlation among significant univariate variables before entering variables into global model
+
+## Democracy var colinearity
+
+Take away: A lot of collinearity among V-Dem variables; will consider P-value of univarite models and correlation with EPI when deciding which variables to remove.
+
+```{r, warning = FALSE, message = FALSE, fig.width = 10, fig.height = 10}
+sig_vars <- c("v2excrptps_ord", "v2smgovab_ord", "v2smgovfilprc_ord", 
+              "v2mecenefm_ord", "v2mecrit_ord", "v2mebias_ord")
+ggpairs(reportingDat, columns = sig_vars)
+```
+
+## EPI vs. democracy vars{.tabset .tabset-pills}
+
+Take away:
+
+* Corruption-related variables are strongly negatively correlated with EPI
+  + not surprising, since it is a component of EPI
+* Print/broadcast media variables are not highly correlated with EPI
+  + Can provide additional information to the model
+* Coordinated Information Operations variables (online media, internet censorship) are mildly correlatd with EPI
+
+```{r, fig.width= 4, fig.height= 4, results = 'asis'}
+epi_figure <- function(var){
+  cat("\n\n")
+  cat(paste0("### ", var))
+  cat("\n\n")
+  info <- var_info(gsub("_ord","", var))
+  pred_var <- reportingDat[, get(var)]
+  corr <- round(cor(reportingDat$EPI, pred_var, use="complete.obs"), 2)
+  p <- ggplot(data = reportingDat, aes(x  = EPI, y = get(var))) +
+    geom_point(width = 0.1, height = 0) +
+  ggtitle(paste0(var, ": ", corr)) + ylab(info$name)
+  print(p)
+}
+
+invisible(lapply(epi_figure, X = sig_vars))
+```
+
+## EPI vs. income
+
+Take away: EPI and income highly correlated.
+  + Income is also a component of EPI
+
+```{r}
+ggplot(data = reportingDat, aes(x = income, y = EPI)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(width = 0.1, height = 0,alpha = 0.5)
+```
+
+# III. Model selection
+
+Global model variables:
+
+* EPI
+* v2mebias_ord
+* STI
+* CFR
+
+Excluded due to collinearity:
+
+* Income group: highly correlated with EPI
+* v2smgovfilprc_ord (Government Internet filtering in practice): highly correlated with v2smgovab_ord and moderately correlated with EPI. Additionally, fewer data points available for model fitting due to limited years of data collection.
+* v2smgovdom_ord (Government dissemination of false information domestically): highly correlated with v2smgovab_ord and v2smgovfilprc_ord. Additionally, fewer data points available for model fitting due to limited years of data collection.
+* v2mecenefm_ord (Government censorship effort — media): correlated with v2mebias_ord and EPI.
+
+## All subsets regression
+
+* Showing the models with $\Delta$AIC less than 2 from all subsets regression.
+
+```{r, warning = FALSE, message = FALSE}
+global_mod <- glm(reporting_rate ~  v2mebias_ord +
+                    EPI + STI + CFR, data = modDat,
+                  family = "binomial")
+options(na.action = "na.fail")
+mc <- dredge(global.model = global_mod)
+pander(data.table(subset(mc, delta < 2)), split.table = Inf)
+```
+
+## ANOVA model comparison
+
+* If ANOVA comparison is significant, this supports inclusion of the additional variable over the more parsimonious model.
+```{r}
+# still using modDat which only includes rows without NA because data must be of same length for ANOVA comparison
+mod1 <- glmrob(reporting_rate ~  STI +  CFR + EPI + v2mebias_ord, 
+                         data = modDat, family = "binomial", method = "BY")
+## second lowest AIC
+mod2 <- glmrob(reporting_rate ~  STI +  CFR + v2mebias_ord,
+                         data = modDat, family = "binomial", method = "BY")
+## third lowest AIC
+mod3 <- glmrob(reporting_rate ~  STI +  CFR + EPI,
+                         data = modDat, family = "binomial", method = "BY")
+
+```
+
+### Top model vs. parsimonious model 1: 
+
+```{r}
+anova(mod1, mod2, test = "Wald")
+```
+
+
+### Top model vs. parsimonious model 2: 
+
+```{r}
+anova(mod1, mod3, test = "Wald")
+```
+
+# IV. Model results 
+
+* Using robust regression to account for nonconstant variance.
+* Terms with P<0.05 are in **bold**.
+* Including variable importance to indicate which variables have the largest effect on reporting rate.
+* Including the top 3 models for comparison.
+
+```{r}
+# need to reset after na.fail for dredge() model selection
+ options(na.action = "na.omit")
+
+# fitting a robust binomial model and binomial model because residuals are not available from robust model object
+# the non-robust residuals will be examined to compare model fits
+
+## top model
+top_mod<- glm(reporting_rate ~  STI +  CFR + EPI + v2mebias_ord, data = reportingDat, family = "binomial")
+save(top_mod, file = "../data/final_model.rda", version = 2)
+
+top_mod_robust <- glmrob(reporting_rate ~  STI +  CFR + EPI + v2mebias_ord, 
+                         data = reportingDat, family = "binomial", method = "BY")
+save(top_mod_robust, file = "../data/final_model_robust.rda", version = 2)
+
+## second lowest AIC
+par_mod <- glm(reporting_rate ~  STI +  CFR +  v2mebias_ord, data = reportingDat, family = "binomial")
+par_mod_robust <- glmrob(reporting_rate ~  STI +  CFR + v2mebias_ord,
+                         data = reportingDat, family = "binomial", method = "BY")
+## third lowest AIC
+par_mod2 <- glm(reporting_rate ~  STI +  CFR +  EPI, data = reportingDat, family = "binomial")
+par_mod2_robust <- glmrob(reporting_rate ~  STI +  CFR + EPI,
+                         data = reportingDat, family = "binomial", method = "BY")
+```
+
+
+```{r}
+print_model <-function(fit){
+  mod_tab <- tidy(fit)
+  emphasize.strong.rows(which(mod_tab$p.value < 0.05,  arr.ind = TRUE))
+  if(any(mod_tab$p.value < 0.05)){
+    emphasize.strong.rows(which(mod_tab$p.value < 0.05,  arr.ind = TRUE))
+  }
+  cat("\n\n")
+  cat(pander("Model results: "))
+  cat("\n\n")
+  cat(pander(mod_tab))
+  cat("\n\n")
+  cat(pander("Variable importance: "))
+  cat("\n\n")
+  cat(pander(varImp(fit)))
+}
+```
+
+## Top model
+
+```{r, results = 'asis'}
+print_model(top_mod_robust)
+```
+
+## Parsimonious model 1
+
+* The model with the second lowest AICc has one fewer term.
+
+```{r, results = 'asis'}
+print_model(par_mod)
+```
+
+## Parsimonious model 2
+
+* The model with the third lowest AICc also has one fewer term.
+
+```{r, results = 'asis'}
+print_model(par_mod2)
+```
+
+##  Model diagnostics
+
+* From left to right: residual vs. fitted, actual vs. fitted (transformed to response scale), distribution of residuals.
+* These are from non-robust model.
+
+```{r, fig.width= 12, fig.height= 8}
+p1 <- augment(top_mod) %>%
+  ggplot(., aes(x = .fitted, y =.resid)) + geom_point() + stat_smooth(size = 0.5) +
+  ggtitle("Top: STI +  CFR + EPI + v2mebias_ord") +
+  theme(plot.title = element_text(size=12))
+
+p1.2 <- augment(top_mod) %>%
+  ggplot(., aes(x = 1/(1+ exp(-1*.fitted)), y = reporting_rate)) + geom_point() +
+  ggtitle("Top: STI +  CFR + EPI + v2mebias_ord") +
+  theme(plot.title = element_text(size=12)) +
+    xlim(c(0,1))+
+  geom_abline(size = 0.5, linetype = "dashed")
+
+p1.3 <- augment(top_mod) %>%
+  ggplot(., aes(x = .resid)) + geom_density() +
+  ggtitle("Top: STI +  CFR + EPI + v2mebias_ord")
+
+p2 <- augment(par_mod) %>%
+  ggplot(., aes(x = .fitted, y =.resid)) + geom_point() + stat_smooth(size = 0.5)+
+  ggtitle("Parsimonious 1: STI +  CFR + v2mebias_ord")+
+  theme(plot.title = element_text(size=12))
+
+p2.2 <- augment(par_mod) %>%
+  ggplot(., aes(x = 1/(1+ exp(-1*.fitted)), y = reporting_rate)) + geom_point() +
+  ggtitle("Parsimonious 1: STI +  CFR + v2mebias_ord")+
+  theme(plot.title = element_text(size=12)) +
+    xlim(c(0,1))+
+  geom_abline(size = 0.5, linetype = "dashed")
+
+p2.3 <- augment(par_mod) %>%
+  ggplot(., aes(x = .resid)) + geom_density() +
+  ggtitle("Top: STI +  CFR + v2mebias_ord")
+
+p3 <- augment(par_mod2) %>%
+  ggplot(., aes(x = .fitted, y =.resid)) + geom_point() +
+  stat_smooth(size = 0.5) +
+  ggtitle("Parsimonious 2: STI +  CFR + EPI")+
+  theme(plot.title = element_text(size=12))
+
+p3.2 <- augment(par_mod2) %>%
+  ggplot(., aes(x = 1/(1+ exp(-1*.fitted)), y = reporting_rate)) + geom_point() +
+  ggtitle("Parsimonious 2: STI +  CFR + EPI")+
+  theme(plot.title = element_text(size=12)) +
+    xlim(c(0,1))+
+  geom_abline(size = 0.5, linetype = "dashed")
+
+p3.3 <- augment(par_mod2) %>%
+  ggplot(., aes(x = .resid)) + geom_density() +
+  ggtitle("Top: STI +  CFR + EPI")
+
+gridExtra::grid.arrange(p1, p1.2, p1.3,
+                        p2, p2.2, p2.3,
+                        p3, p3.2, p3.3,
+                        ncol = 3)
+```
+
+

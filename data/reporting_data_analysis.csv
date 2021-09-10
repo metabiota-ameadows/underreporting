@@ -1,0 +1,113 @@
+ISO2,year,country.x,pathogen,CFR,epidemic,EPI,reporting_rate,country.y,v2smgovdom_ord,v2smgovab_ord,v2smgovfilprc_ord,v2excrptps_ord,v2mecenefm_ord,v2mecrit_ord,v2mebias_ord,income,STI
+AR,1990,Argentina,leishmania cutaneous,0,No,79,0.44,Argentina,,,,2,4,3,4,Upper middle income,No
+BE,2004,Belgium,influenza a virus,0.1466,Yes,85,0.036,Belgium,4,4,4,3,4,3,4,High income,No
+CN,2005,China,rotavirus a,0.0034,No,77,0.25,China,1,1,1,1,0,1,0,Upper middle income,No
+CN,2008,China,neisseria gonorrhoeae,0,No,77,0.58,China,1,1,1,1,0,1,0,Upper middle income,Yes
+CO,1995,Colombia,dengue virus,1e-04,No,73,0.111,Colombia,,,,2,3,3,3,Upper middle income,No
+CO,2010,Colombia,dengue virus,1e-04,Yes,73,1,Colombia,2,2,3,2,3,3,4,Upper middle income,No
+CO,2011,Colombia,dengue virus,1e-04,No,73,0.286,Colombia,3,3,3,2,3,3,4,Upper middle income,No
+CO,2015,Colombia,chikungunya virus,0.001,No,73,0.13,Colombia,3,3,3,2,3,3,4,Upper middle income,No
+DE,2006,Germany,measles virus,0.002,Yes,87,0.4,Germany,4,4,4,4,4,3,4,High income,No
+DE,2007,Germany,mumps virus,1e-04,No,87,0.075,Germany,4,4,4,4,4,3,4,High income,No
+FR,2003,France,legionella,0.1,No,87,0.33,France,3,3,3,3,4,3,4,High income,No
+FR,2014,France,zika virus,0,Yes,87,0.12,France,3,3,3,3,4,3,4,High income,No
+GB,1984,United Kingdom,clostridium tetani,0.13,No,87,0.36,United Kingdom,,,,3,3,3,4,High income,No
+GN,2014,Guinea,zaire ebolavirus,0.415,Yes,41,0.5,Guinea,3,3,3,1,3,2,3,Low income,No
+GR,1996,Greece,listeria,0.2,No,82,0.588,Greece,,,,2,4,3,4,High income,No
+GR,2004,Greece,brucella,0.01,No,82,0.74,Greece,3,3,3,2,4,3,4,High income,No
+GR,2004,Greece,leishmania visceral,0.0929,No,82,0.74,Greece,3,3,3,2,4,3,4,High income,No
+GR,2004,Greece,mycobacterium tuberculosis,0.435,No,82,0.52,Greece,3,3,3,2,4,3,4,High income,No
+GR,2004,Greece,varicella-zoster virus,0,No,82,0.565,Greece,3,3,3,2,4,3,4,High income,No
+GR,2012,Greece,west nile virus,0.001,No,82,0.822,Greece,3,3,3,2,4,3,4,High income,No
+GT,1997,Guatemala,leishmania cutaneous,0,No,57,0.025,Guatemala,,,,1,3,3,3,Upper middle income,No
+ID,2000,Indonesia,dengue virus,1e-04,No,66,0.018,Indonesia,3,3,3,1,3,3,4,Lower middle income,No
+ID,2001,Indonesia,dengue virus,1e-04,No,66,0.07,Indonesia,3,3,3,1,3,3,4,Lower middle income,No
+ID,2002,Indonesia,dengue virus,1e-04,No,66,0.028,Indonesia,3,3,3,1,3,3,4,Lower middle income,No
+ID,2010,Indonesia,dengue virus,1e-04,No,66,0.017,Indonesia,3,3,3,1,3,3,4,Lower middle income,No
+IN,2000,India,leishmania visceral,0.0929,No,65,0.123,India,3,3,3,2,3,3,4,Lower middle income,No
+IN,2003,India,leishmania visceral,0.0929,No,65,0.12,India,3,3,3,2,3,3,4,Lower middle income,No
+IN,2005,India,leishmania visceral,0.0929,No,65,0.27,India,3,3,3,2,3,3,3,Lower middle income,No
+IT,1996,Italy,varicella-zoster virus,0,No,89,0.13,Italy,,,,3,4,3,4,High income,No
+IT,2001,Italy,neisseria meningitidis,0.15,No,89,0.828,Italy,4,4,4,3,4,2,4,High income,No
+IT,2001,Italy,varicella-zoster virus,0,No,89,0.206,Italy,4,4,4,3,4,2,4,High income,No
+IT,2002,Italy,legionella,0.1,No,89,0.786,Italy,4,4,4,3,3,2,4,High income,No
+IT,2004,Italy,mumps virus,1e-04,No,89,0.057,Italy,4,4,4,3,3,2,4,High income,No
+IT,2008,Italy,rotavirus a,0.0034,No,89,0.612,Italy,4,4,4,3,3,3,4,High income,No
+IT,2010,Italy,west nile virus,0.001,Yes,89,0.001,Italy,4,4,4,3,3,2,4,High income,No
+JO,2001,Jordan,leishmania cutaneous,0,No,68,0.021,Jordan,2,3,2,1,1,2,3,Upper middle income,No
+KE,2008,Kenya,vibrio cholerae,0.01,Yes,52,0.685,Kenya,2,3,3,1,3,3,4,Lower middle income,No
+KH,2006,Cambodia,dengue virus,1e-04,Yes,63,0.091,Cambodia,1,2,2,0,2,2,2,Lower middle income,No
+KH,2007,Cambodia,dengue virus,1e-04,Yes,63,0.053,Cambodia,1,2,2,0,2,2,2,Lower middle income,No
+KH,2008,Cambodia,dengue virus,1e-04,No,63,0.0615,Cambodia,1,2,2,0,2,2,2,Lower middle income,No
+LR,2014,Liberia,zaire ebolavirus,0.415,Yes,44,0.489,Liberia,3,3,3,1,3,3,3,Low income,No
+MY,2001,Malaysia,dengue virus,1e-04,No,78,0.263,Malaysia,3,3,3,2,0,1,1,Upper middle income,No
+NG,2007,Nigeria,measles virus,0.002,No,44,0.115,Nigeria,3,3,3,0,3,3,4,Lower middle income,No
+NI,2001,Nicaragua,dengue virus,1e-04,No,68,0.048,Nicaragua,3,2,2,1,3,3,3,Lower middle income,No
+NI,2002,Nicaragua,dengue virus,1e-04,No,68,0.048,Nicaragua,3,2,2,1,4,3,4,Lower middle income,No
+NI,2003,Nicaragua,dengue virus,1e-04,No,68,0.043,Nicaragua,3,2,2,1,4,3,4,Lower middle income,No
+NI,2004,Nicaragua,dengue virus,1e-04,No,68,0.049,Nicaragua,3,2,2,1,4,3,4,Lower middle income,No
+NI,2005,Nicaragua,dengue virus,1e-04,No,68,0.017,Nicaragua,3,2,2,1,4,3,4,Lower middle income,No
+NI,2006,Nicaragua,dengue virus,1e-04,No,68,0.083,Nicaragua,3,2,2,1,4,3,3,Lower middle income,No
+NI,2007,Nicaragua,dengue virus,1e-04,No,68,0.017,Nicaragua,2,2,2,1,3,2,3,Lower middle income,No
+NL,2006,Netherlands,hepatitis a virus,0.006,No,94,0.222,Netherlands,4,4,4,3,4,3,4,High income,No
+NL,2007,Netherlands,chlamydia trachomatis,0,No,94,0.9,Netherlands,4,4,4,3,4,3,4,High income,Yes
+NL,2007,Netherlands,coxiella burnetii,0.01,No,94,0.198,Netherlands,4,4,4,3,4,3,4,High income,No
+NL,2011,Netherlands,hepatitis b virus,0.0186,No,94,0.826,Netherlands,4,4,4,3,4,3,4,High income,Yes
+NL,2011,Netherlands,hepatitis c virus,0,No,94,0.667,Netherlands,4,4,4,3,4,3,4,High income,Yes
+NL,2011,Netherlands,human immunodeficiency virus,0.202,Yes,94,1,Netherlands,4,4,4,3,4,3,4,High income,Yes
+NL,2011,Netherlands,influenza a virus,0.1466,Yes,94,0.222,Netherlands,4,4,4,3,4,3,4,High income,No
+NL,2011,Netherlands,measles virus,0.002,Yes,94,0.077,Netherlands,4,4,4,3,4,3,4,High income,No
+NL,2011,Netherlands,mumps virus,1e-04,No,94,1,Netherlands,4,4,4,3,4,3,4,High income,No
+NL,2011,Netherlands,mycobacterium tuberculosis,0.435,No,94,0.909,Netherlands,4,4,4,3,4,3,4,High income,No
+NL,2011,Netherlands,neisseria gonorrhoeae,0,No,94,0.395,Netherlands,4,4,4,3,4,3,4,High income,Yes
+NL,2011,Netherlands,poliovirus,5e-04,No,94,1,Netherlands,4,4,4,3,4,3,4,High income,No
+NL,2011,Netherlands,rabies virus,1,No,94,1,Netherlands,4,4,4,3,4,3,4,High income,No
+NL,2011,Netherlands,rubella virus,2e-04,No,94,0.077,Netherlands,4,4,4,3,4,3,4,High income,No
+NL,2011,Netherlands,treponema pallidum,0,No,94,0.238,Netherlands,4,4,4,3,4,3,4,High income,Yes
+PE,2004,Peru,dengue virus,1e-04,No,66,0.032,Peru,4,4,4,1,4,3,4,Upper middle income,No
+PH,2007,Philippines,dengue virus,1e-04,No,66,0.067,Philippines,2,2,3,1,3,3,4,Lower middle income,No
+PH,2010,Philippines,dengue virus,1e-04,Yes,66,0.071,Philippines,2,2,3,2,3,3,4,Lower middle income,No
+SA,2013,Saudi Arabia,mers coronavirus,0.36,Yes,73,0.38,Saudi Arabia,1,2,1,1,0,1,0,High income,No
+SA,2014,Saudi Arabia,mers coronavirus,0.36,Yes,73,0.263,Saudi Arabia,1,2,1,1,0,1,0,High income,No
+SG,2004,Singapore,dengue virus,1e-04,No,95,0.242,Singapore,3,3,2,4,1,1,3,High income,No
+SI,2015,Slovenia,tick-borne encephalitis,0.02,No,88,0.45,Slovenia,4,4,4,3,4,3,4,High income,No
+SL,2014,Sierra Leone,zaire ebolavirus,0.415,Yes,52,0.526666666666667,Sierra Leone,3,3,3,1,3,2,3,Low income,No
+TH,2001,Thailand,dengue virus,1e-04,No,76,0.118,Thailand,3,3,3,2,1,3,3,Upper middle income,No
+TH,2010,Thailand,dengue virus,1e-04,Yes,76,0.091,Thailand,3,3,2,2,1,3,3,Upper middle income,No
+TZ,2016,Tanzania,vibrio cholerae,0.01,Yes,44,0.48,Tanzania,2,3,3,3,2,2,3,Low income,No
+US,1971,United States,drug-resistant shigella,2e-04,No,85,0.62,United States of America,,,,3,3,3,4,High income,No
+US,1971,United States,mycobacterium tuberculosis,0.435,No,85,0.63,United States of America,,,,3,3,3,4,High income,No
+US,1972,United States,mycobacterium tuberculosis,0.435,No,85,0.65,United States of America,,,,3,4,3,4,High income,No
+US,1974,United States,neisseria gonorrhoeae,0,No,85,0.42,United States of America,,,,3,4,3,4,High income,Yes
+US,1978,United States,drug-resistant shigella,2e-04,No,85,0.3,United States of America,,,,3,4,3,4,High income,No
+US,1983,United States,neisseria gonorrhoeae,0,No,85,0.93,United States of America,,,,3,4,3,4,High income,Yes
+US,1988,United States,drug-resistant shigella,2e-04,No,85,0.67,United States of America,,,,3,4,3,4,High income,No
+US,1988,United States,hepatitis a virus,0.006,No,85,0.33,United States of America,,,,3,4,3,4,High income,No
+US,1988,United States,hepatitis b virus,0.0186,No,85,0.5,United States of America,,,,3,4,3,4,High income,Yes
+US,1988,United States,neisseria gonorrhoeae,0,No,85,0.95,United States of America,,,,3,4,3,4,High income,Yes
+US,1988,United States,treponema pallidum,0,No,85,0.79,United States of America,,,,3,4,3,4,High income,Yes
+US,1989,United States,neisseria gonorrhoeae,0,No,85,0.91,United States of America,,,,3,4,3,4,High income,Yes
+US,1991,United States,measles virus,0.002,Yes,85,0.63,United States of America,,,,3,3,3,4,High income,No
+US,1992,United States,mycobacterium tuberculosis,0.435,No,85,0.86,United States of America,,,,3,4,3,4,High income,No
+US,1993,United States,borrelia burgdorferi,0,No,85,0.12,United States of America,,,,3,4,3,4,High income,No
+US,1995,United States,mycobacterium tuberculosis,0.435,No,85,0.98,United States of America,,,,3,4,3,4,High income,No
+US,1996,United States,mycobacterium tuberculosis,0.435,No,85,0.81,United States of America,,,,3,4,3,4,High income,No
+US,1997,United States,corynebacterium diphtheriae,0.1,No,85,0.5,United States of America,,,,3,4,3,4,High income,No
+US,1999,United States,west nile virus,0.001,No,85,0.011,United States of America,,,,3,4,3,4,High income,No
+US,2003,United States,west nile virus,0.001,Yes,85,0,United States of America,4,3,4,3,4,3,3,High income,No
+US,2005,United States,dengue virus,1e-04,No,85,0.182,United States of America,4,3,4,3,4,3,3,High income,No
+US,2006,United States,dengue virus,1e-04,No,85,0.6,United States of America,4,3,4,3,4,3,3,High income,No
+US,2008,United States,methicillin-resistant staphylococcus aureus (mrsa),0.218,No,85,0.346,United States of America,4,3,4,3,4,3,3,High income,No
+US,2009,United States,influenza a virus,0.1466,Yes,85,0.013,United States of America,4,3,4,3,4,3,3,High income,No
+US,2010,United States,influenza a virus,0.1466,Yes,85,0.326,United States of America,4,3,4,3,4,3,4,High income,No
+US,2014,United States,chikungunya virus,0.001,No,85,0.02,United States of America,4,3,4,3,4,3,4,High income,No
+US,2016,United States,west nile virus,0.001,No,85,0.015,United States of America,3,3,4,3,4,3,3,High income,No
+VE,2002,Venezuela,dengue virus,1e-04,No,59,0.059,Venezuela,1,1,2,1,2,2,3,Upper middle income,No
+VE,2003,Venezuela,dengue virus,1e-04,No,59,0.067,Venezuela,1,1,2,1,2,2,3,Upper middle income,No
+VE,2007,Venezuela,dengue virus,1e-04,Yes,59,0.154,Venezuela,1,1,2,0,1,2,3,Upper middle income,No
+VN,2001,Vietnam,dengue virus,1e-04,No,78,0.172,Vietnam,2,2,1,2,1,0,0,Lower middle income,No
+VN,2004,Vietnam,dengue virus,1e-04,No,78,0.03,Vietnam,2,2,1,2,1,0,0,Lower middle income,No
+VN,2005,Vietnam,dengue virus,1e-04,No,78,0.045,Vietnam,2,2,1,2,1,0,0,Lower middle income,No
+VN,2006,Vietnam,dengue virus,1e-04,No,78,0.032,Vietnam,2,2,1,2,1,0,0,Lower middle income,No
+VN,2007,Vietnam,dengue virus,1e-04,Yes,78,0.034,Vietnam,2,2,1,2,1,0,0,Lower middle income,No
+VN,2010,Vietnam,dengue virus,1e-04,No,78,0.067,Vietnam,2,2,1,2,1,0,0,Lower middle income,No
