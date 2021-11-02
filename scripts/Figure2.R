@@ -9,7 +9,7 @@ load("data/final_model_robust.rda")
 load("data/final_model.rda")
 
 reportingDat <- fread("data/reporting_data_analysis.csv")
-
+reportingDat[, CFR := CFR *100]
 ilink <- family(top_mod)$linkinv # using non-robust model to fetch family because not accessible in robust model 
 
 # use the effect() function to show the effect of the term accounting for the other model variables

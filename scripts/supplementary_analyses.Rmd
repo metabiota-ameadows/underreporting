@@ -29,13 +29,12 @@ theme_set(theme_bw())
 ```
 
 
-
 ```{r}
 # reporting data
 reportingDat <- fread("../data/reporting_data_analysis.csv")
 reportingDat[, income := factor(income, levels = c("Low income", "Lower middle income", 
                                                    "Upper middle income", "High income"))]
-
+reportingDat[, CFR := CFR*100]
 ```
 
 # I. Variable profiles
