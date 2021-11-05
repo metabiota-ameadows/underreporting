@@ -1,17 +1,14 @@
 ---
 title: "Supplementary Analysis: Infectious disease underreporting is predicted by country-level preparedness, politics, and pathogen severity."
-author: "Amanda Meadows"
-date: "`r Sys.Date()`"
+author: "Meadows et al."
 output:
-  html_document:
+  pdf_document:
     toc: true
-    toc_float: true
     toc_depth: 2
-    code_folding: hide
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 knitr::opts_chunk$set(message = FALSE)
 knitr::opts_chunk$set(warning = FALSE)
 library(data.table) # for data wrangling
@@ -76,12 +73,8 @@ run_mod <- function(pred_var){
   
   cat(paste0("Column name in data: ", pred_var))
   cat("\n\n")
-  if(!purrr::is_empty(info$name)){
-    cat(paste0("Question: ", info$question))
-    cat("\n\n")
-    cat("Responses: ", paste0(info$responses))
-    cat("\n\n")
-  } else if(pred_var == "CFR"){
+
+  if(pred_var == "CFR"){
     cat("Description: Case fatality rate.")
     cat("\n\n")
   } else if(pred_var == "income"){
@@ -95,6 +88,11 @@ run_mod <- function(pred_var){
     cat("\n\n")
   } else if(pred_var == "epidemic"){
     cat("Description: Was the study estimating reporting rates during an epidemic?")
+    cat("\n\n")
+  }else if(!purrr::is_empty(info$name)){
+    cat(paste0("Question: ", info$question))
+    cat("\n\n")
+    cat("Responses: ", paste0(info$responses))
     cat("\n\n")
   }
   cat(paste0("N: ", N))
@@ -125,7 +123,7 @@ run_mod <- function(pred_var){
 }
 ```
 
-```{r, results = 'asis', fig.width= 6, fig.height = 3, fig.align= 'center'}
+```{r, results = 'asis', fig.width= 5, fig.height = 3.5, fig.align= 'center'}
 run_mod("income")
 ```
 
@@ -145,29 +143,29 @@ invisible(lapply(run_mod, X = cont_vars))
 
 # II. Collinearity assessment 
 
-* Assessing correlation among significant univariate variables before entering variables into global model
+Assessing correlation among significant univariate variables before entering variables into global model
 
-## Democracy var colinearity
+\pagebreak 
+
+## V-DEM variable colinearity
 
 Take away: A lot of collinearity among V-Dem variables; will consider P-value of univarite models and correlation with EPI when deciding which variables to remove.
 
-```{r, warning = FALSE, message = FALSE, fig.width = 10, fig.height = 10}
+```{r, warning = FALSE, message = FALSE, fig.width = 8, fig.height = 8, fig.align= 'center'}
 sig_vars <- c("v2excrptps_ord", "v2smgovab_ord", "v2smgovfilprc_ord", 
               "v2mecenefm_ord", "v2mecrit_ord", "v2mebias_ord")
 ggpairs(reportingDat, columns = sig_vars)
 ```
 
-## EPI vs. democracy vars{.tabset .tabset-pills}
+## EPI vs. V-DEM variables {.tabset .tabset-pills}
 
-Take away:
+* Plots of each V-DEM variable (y-axis) considered against EPI (x-axis)
+* Main take aways:
+  + Corruption-related variables are strongly negatively correlated with EPI. Not surprising, since it is a component of EPI
+  + Print/broadcast media variables are not highly correlated with EPI. Can provide additional information to the model.
+  + Coordinated Information Operations variables (online media, internet censorship) are mildly correlatd with EPI
 
-* Corruption-related variables are strongly negatively correlated with EPI
-  + not surprising, since it is a component of EPI
-* Print/broadcast media variables are not highly correlated with EPI
-  + Can provide additional information to the model
-* Coordinated Information Operations variables (online media, internet censorship) are mildly correlatd with EPI
-
-```{r, fig.width= 4, fig.height= 4, results = 'asis'}
+```{r, fig.width= 3, fig.height= 3, results = 'asis', fig.align= 'center'}
 epi_figure <- function(var){
   cat("\n\n")
   cat(paste0("### ", var))
@@ -177,7 +175,9 @@ epi_figure <- function(var){
   corr <- round(cor(reportingDat$EPI, pred_var, use="complete.obs"), 2)
   p <- ggplot(data = reportingDat, aes(x  = EPI, y = get(var))) +
     geom_point(width = 0.1, height = 0) +
-  ggtitle(paste0(var, ": ", corr)) + ylab(info$name)
+  ggtitle(paste0("R-squared ", corr)) + 
+    ylab(info$name) +
+theme(text = element_text(size=8))
   print(p)
 }
 
@@ -186,10 +186,10 @@ invisible(lapply(epi_figure, X = sig_vars))
 
 ## EPI vs. income
 
-Take away: EPI and income highly correlated.
+* Take away: EPI and income highly correlated.
   + Income is also a component of EPI
 
-```{r}
+```{r, fig.width = 5, fig.height = 3.5, fig.align = 'center'}
 ggplot(data = reportingDat, aes(x = income, y = EPI)) +
   geom_boxplot(outlier.shape = NA) +
   geom_jitter(width = 0.1, height = 0,alpha = 0.5)
@@ -338,7 +338,7 @@ cat(pander(varImp_dt))
 * The model with the second lowest AICc has one fewer term.
 
 ```{r, results = 'asis'}
-print_model(par_mod)
+print_model(par_mod_robust)
 ```
 
 ## Parsimonious model 2
@@ -346,8 +346,10 @@ print_model(par_mod)
 * The model with the third lowest AICc also has one fewer term.
 
 ```{r, results = 'asis'}
-print_model(par_mod2)
+print_model(par_mod2_robust)
 ```
+
+\pagebreak 
 
 ##  Model diagnostics
 
