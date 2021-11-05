@@ -68,4 +68,4 @@ p4 <- ggplot() +
 #ggsave("./figures/STI_fig.jpeg", width = 5.5, height = 3.5, dpi = 300)
 
 p5 <- grid.arrange(p1, p2, p3, p4, ncol = 2)
-ggsave(p5, filename = "./figures/Figure2.jpeg", width = 7.5, height = 7, dpi = 300)
+ggsave(p5, filename = "./figures/Figure2.tiff", width = 7.5, height = 7, dpi = 300)

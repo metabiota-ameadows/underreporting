@@ -19,11 +19,20 @@ mapDat<- merge(world1, reportingMap, by.x ="iso_a2", by.y = "ISO2", all = T)
 
 
 ggplot(data = mapDat) + geom_sf(aes(fill = as.factor(v2mebias_ord)), 
-                                size = 0.05)+
+                                size = 0.1)+
   scale_fill_manual(name = "Media bias score", 
                        labels = c("0", "1", "2", "3", "4", "No data"),
-                       values = c("#F8FFE5", "#FFC43D","hotpink3", "lightblue3", "darkslategray4","white"))+ 
-  geom_sf_text_repel(aes(label = EPI), size = 2.25) + 
-  xlab("")+ylab("")
+                       values = c("rosybrown2", "#725663FF", "#D49464FF", "#5B8FA8FF","#ADB17DFF"))+ 
+  geom_sf_text_repel(aes(label = EPI), size = 3, 
+                     min.segment.length = unit(0, 'lines'), box.padding = 0.3) + 
+  xlab("")+ylab("") + 
+  theme(legend.position = c(0.5, 0.08),
+        legend.direction = "horizontal",
+        legend.background = element_rect(color = "black",
+                                         size=0.25, linetype="solid"))+
+  
+  guides(fill = guide_legend(nrow = 1))
 
-ggsave("./figures/Figure1.jpeg", width = 6.5, height = 5, dpi = 300)
+
+
+ggsave("./figures/Figure1.tiff", width = 6.5, height = 4, dpi = 300)
