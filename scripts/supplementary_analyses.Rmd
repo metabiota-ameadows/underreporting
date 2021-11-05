@@ -246,7 +246,6 @@ mod3 <- glmrob(reporting_rate ~  STI +  CFR + EPI,
 anova(mod1, mod2, test = "Wald")
 ```
 
-
 ### Top model vs. parsimonious model 2: 
 
 ```{r}
@@ -294,13 +293,8 @@ print_model <-function(fit){
     emphasize.strong.rows(which(mod_tab$p.value < 0.05,  arr.ind = TRUE))
   }
   cat("\n\n")
-  cat(pander("Model results: "))
-  cat("\n\n")
   cat(pander(mod_tab))
   cat("\n\n")
-  cat(pander("Variable importance: "))
-  cat("\n\n")
-  cat(pander(varImp(fit)))
 }
 ```
 
@@ -309,6 +303,35 @@ print_model <-function(fit){
 ```{r, results = 'asis'}
 print_model(top_mod_robust)
 ```
+
+### Variable importance
+
+* Comparing reduction in deviance when each term is entered into the model last.
+
+```{r, results = 'asis'}
+calc_deviance_decrease <- function(mod){
+  # We are only interested in the last row because the 'Deviance'
+  # column gives the reduction in deviance as terms are added sequentially.
+  deviance_dt <- data.table(anova(mod), keep.rownames = T)
+  deviance_dt <- deviance_dt[5, .("Variable" = rn, "Reduction in deviance" = Deviance)]
+  return(deviance_dt)
+}
+
+top_mod_cfr <- glm(reporting_rate ~  STI  + EPI + v2mebias_ord +  CFR, 
+                   data = reportingDat, family = "binomial")
+top_mod_sti <- glm(reporting_rate ~  EPI + v2mebias_ord +  CFR + STI, 
+                   data = reportingDat, family = "binomial")
+top_mod_epi <- glm(reporting_rate ~  v2mebias_ord +  CFR + STI + EPI, 
+                   data = reportingDat, family = "binomial")
+top_mod_v2mebias <- glm(reporting_rate ~  CFR + STI + EPI + v2mebias_ord, 
+                        data = reportingDat, family = "binomial")
+
+deviance_list <- lapply(calc_deviance_decrease, X = list(top_mod_cfr, top_mod_sti, 
+                                                      top_mod_epi, top_mod_v2mebias))
+varImp_dt <- rbindlist(deviance_list)
+cat(pander(varImp_dt))
+```
+
 
 ## Parsimonious model 1
 
